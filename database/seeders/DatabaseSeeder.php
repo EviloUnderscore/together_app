@@ -56,21 +56,21 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Risus Ornare Mollis Dolor',
                 'description' => 'Vestibulum id ligula porta felis euismod semper. Nulla vitae elit libero, a pharetra augue.',
-                'location' => 'Purus Nibh',
+                'location' => '4684, Haccourt',
                 'date' => Carbon::create(2023, 5, 18, 14, 30, 0),
                 'lat' => '50.14141',
                 'long' => '5.03345',
-                'image' => '4684, Haccourt',
+                'image' => 'image-activity-2.jpg',
                 'category_id' => 2
             ],
             [
                 'name' => 'Risus Ornare Mollis Dolor',
                 'description' => 'Vestibulum id ligula porta felis euismod semper. Nulla vitae elit libero, a pharetra augue.',
-                'location' => '4684, Haccourt',
+                'location' => '4000, Liège',
                 'date' => Carbon::create(2023, 5, 22, 14, 30, 0),
                 'lat' => '50.14141',
                 'long' => '5.03345',
-                'image' => '4000, Liège',
+                'image' => 'image-activity-2.jpg',
                 'category_id' => 3
             ],
             [
@@ -80,7 +80,7 @@ class DatabaseSeeder extends Seeder
                 'date' => Carbon::create(2023, 5, 28, 14, 30, 0),
                 'lat' => '50.14141',
                 'long' => '5.03345',
-                'image' => '4140, Sprimont',
+                'image' => 'image-activity-1.jpg',
                 'category_id' => 2
             ],
             [
@@ -90,7 +90,7 @@ class DatabaseSeeder extends Seeder
                 'date' => Carbon::create(2023, 6, 5, 14, 30, 0),
                 'lat' => '50.14141',
                 'long' => '5.03345',
-                'image' => '4430, Ans',
+                'image' => 'image-activity-3.jpg',
                 'category_id' => 3
             ],
             [
@@ -106,11 +106,11 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Risus Ornare Mollis Dolor',
                 'description' => 'Vestibulum id ligula porta felis euismod semper. Nulla vitae elit libero, a pharetra augue.',
-                'location' => 'Purus Nibh',
+                'location' => '4102, Ougrée',
                 'date' => Carbon::create(2023, 6, 9, 14, 30, 0),
                 'lat' => '50.14141',
                 'long' => '5.03345',
-                'image' => '4100, Boncelles',
+                'image' => 'image-activity-2.jpg',
                 'category_id' => 1
             ],
             [
