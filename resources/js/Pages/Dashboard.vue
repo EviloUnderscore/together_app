@@ -4,6 +4,11 @@ import Filter from '../Components/Filter.vue';
 import ActivitiesNearby from '../Components/ActivitiesNearby.vue';
 import ActivitiesNext from '../Components/ActivitiesNext.vue';
 import Sports from '../Components/Sports.vue';
+import { onBeforeMount, onMounted } from 'vue';
+
+import { useLocationStore } from '../stores/locationStore';
+const locationStore = useLocationStore();
+locationStore.fetchLocation();
 
 defineProps({
     activities: Array,

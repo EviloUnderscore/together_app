@@ -3,10 +3,9 @@ import { defineStore } from "pinia";
 export const useLocationStore = defineStore({
     id: 'locationStore',
     state: () => ({
-      position: null
+      position: []
     }),
     getters: {
-
     },
     actions: {
         async fetchLocation() {
