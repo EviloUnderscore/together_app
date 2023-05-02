@@ -15,7 +15,7 @@ defineProps({
     <div class="min-h-screen  bg-cyan-800  text-slate-50 flex flex-col items-center pt-24">
         <h1 class="text-center text-4xl p-8">Together App</h1>
         <div v-if="canLogin" class="p-6 text-center text-2xl flex flex-col gap-8">
-            <Link v-if="$page.props.auth.user" :href="route('dashboard')" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</Link>
+            <Link v-if="$page.props.auth.user" :href="route('dashboard')" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Vers la page d'accueil</Link>
 
             <template v-else>
                 <Link :href="route('login')" class="font-semibold text-gray-600 bg-cyan-100 rounded-xl py-4 px-16">Log in</Link>

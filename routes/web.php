@@ -18,6 +18,9 @@ use App\Http\Controllers\ActivityController;
 |
 */
 
+Route::get('/activity/{id}', [ActivityController::class, 'getActivityById'])->name('details');
+
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),

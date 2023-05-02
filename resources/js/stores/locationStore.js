@@ -8,14 +8,14 @@ export const useLocationStore = defineStore({
     getters: {
     },
     actions: {
-        async fetchLocation() {
-            try {
-              this.position = await new Promise((resolve, reject) => {
-                navigator.geolocation.getCurrentPosition(resolve, reject)
-              })
-            } catch (error) {
-              console.error(error)
-            }
+      async fetchLocation() {
+          try {
+            this.position = await new Promise((resolve, reject) => {
+              navigator.geolocation.getCurrentPosition(resolve, reject)
+            })
+          } catch (error) {
+            console.error(error)
           }
+        }
     }
 })

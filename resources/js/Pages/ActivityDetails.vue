@@ -1,17 +1,17 @@
 <script setup>
-
-import { computed } from 'vue';
 defineProps({
-    activity: {
-      type: Object,
-      required: true
-    }
-})
-
+  activity: {
+    type: Object,
+    required: true,
+  },
+});
 </script>
 
+
+
 <template>
-    <div class="shrink-0 w-2/3 flex flex-col justify-center bg-cyan-700 rounded-xl overflow-hidden shadow-md">
+    <div>Détail d'un post {{ activity.name }}</div>
+    <!-- <div class="shrink-0 w-2/3 flex flex-col justify-center bg-cyan-700 rounded-xl overflow-hidden shadow-md">
         <div class="relative h-1/2 text-lg font-extrabold">
             <div class="absolute top-4 right-2 bg-slate-50 p-3 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -46,11 +46,10 @@ defineProps({
                 </svg>
                 <p>1/5 participant(s)</p>
             </div>
-            <a class="bg-green-500 w-1/2 px-8 py-4 rounded-lg button text-center" :href="route('details', {id: activity.id})">
-               Infos
-            </a>
+
+            <button type="button" class="bg-green-500 w-1/3 px-8 py-0 rounded-lg">Infos</button>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <style>
@@ -60,7 +59,7 @@ defineProps({
     object-fit: cover ;
 }
 
-.button {
+button {
     align-self: center;
 }
 

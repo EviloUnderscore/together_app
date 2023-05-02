@@ -19,6 +19,17 @@ export const useActivitiesStore = defineStore({
        async fetchActivities(){
         const locationStore = useLocationStore();
         const { latitude, longitude } = locationStore.position.coords;
+        try {
+            const response = await axios.get('/api/activities', {
+              params: {
+                latitude,
+                longitude
+              }
+            });
+            this.activities = response.data;
+          } catch (error) {
+            console.error(error)
+          }
        }
     }
 })

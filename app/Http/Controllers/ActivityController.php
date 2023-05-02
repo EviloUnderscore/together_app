@@ -10,12 +10,21 @@ use App\Models\Category;
 class ActivityController extends Controller
 {
 
-    public function getActivitiesWithDistance(){
-        $activities = Activity::with('category')->get();
+    public function getActivitiesWithDistance() {
         
+        $activities = Activity::with('category', 'user')->get();
+
         return Inertia::render('Dashboard', [
             'activities' => $activities,
             'categories' => Category::all(),
-            ]);
+        ]);
+    }
+
+    public function getActivityById($id) {
+        $activity = Activity::find($id);
+
+        return Inertia::render('ActivityDetails', [
+            'activity' => $activity
+        ]);
     }
 }
