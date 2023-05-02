@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\Activity;
 use App\Models\Category;
+use App\Http\Controllers\ActivityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,10 +32,5 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard', [
-            'activities' => Activity::all(),
-            'categories' => Category::all(),
-            ]);
-    })->name('dashboard');
+    Route::get('/dashboard', [ActivityController::class, 'getActivitiesWithDistance'])->name('dashboard');
 });

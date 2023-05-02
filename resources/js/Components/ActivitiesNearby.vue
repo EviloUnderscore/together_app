@@ -18,6 +18,6 @@ defineProps({
 
 <style>
 .activities{
-    height: 40vh;
+    height: 45vh;
 }
 </style>
