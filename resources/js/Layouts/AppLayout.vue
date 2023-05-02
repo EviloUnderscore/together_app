@@ -28,7 +28,7 @@ const logout = () => {
 
         <Banner />
 
-        <div class="min-h-screen bg-gradient-to-b from-emerald-400 to-cyan-400 pl-8 pb-24">
+        <div class="min-h-screen bg-gradient-to-b from-emerald-400 to-cyan-400">
             
 
             <!-- Page Heading -->

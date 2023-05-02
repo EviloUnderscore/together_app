@@ -21,7 +21,7 @@ class ActivityController extends Controller
     }
 
     public function getActivityById($id) {
-        $activity = Activity::find($id);
+        $activity = Activity::with('category', 'user')->find($id);
 
         return Inertia::render('ActivityDetails', [
             'activity' => $activity

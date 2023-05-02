@@ -20,18 +20,22 @@ defineProps({
 <template>
     <AppLayout title="Home">
         <template #header>
-            <h2 class="font-bold text-5xl text-slate-50 leading-tight">
+            <h2 class="font-bold text-5xl text-slate-50 leading-tight pl-8">
                 Together
             </h2>
         </template>
+        <div class="pl-8 pb-24">
+            <Filter/>
 
-        <Filter/>
+            <Sports :categories="categories"/>
 
-        <Sports :categories="categories"/>
+            <ActivitiesNearby :activities="activities"/>
 
-        <ActivitiesNearby :activities="activities"/>
+            <ActivitiesNext :activities="activities"/>
+        </div>
+        
 
-        <ActivitiesNext :activities="activities"/>
+        
 
     </AppLayout>
 </template>
