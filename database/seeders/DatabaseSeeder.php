@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder,
     App\Models\Category,
     App\Models\Activity,
+    App\Models\User,
     Carbon\Carbon;
 
 
@@ -16,6 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->SeedUsers();
         $this->SeedCategories();
         $this->SeedActivities();
     }
@@ -39,6 +41,19 @@ class DatabaseSeeder extends Seeder
         Category::insert($categories);
     }
 
+    private function SeedUsers(){
+        $users = [
+            ['id' => 1, 
+            'name' => 'UserTest',
+            'email' => 'test-user@gmail.com',
+            'password' => 'Testuser123',
+            ]
+        ];
+
+        // Insert seed data into the categories table
+        User::insert($users);
+    }
+
     private function SeedActivities(){
         
         // Create sample activities data
@@ -51,7 +66,8 @@ class DatabaseSeeder extends Seeder
                 'long' => '5.03345',
                 'date' => Carbon::create(2023, 5, 17, 14, 30, 0),
                 'image' => 'image-activity-1.jpg',
-                'category_id' => 1
+                'category_id' => 1,
+                'user_id' => 1,
             ],
             [
                 'name' => 'Risus Ornare Mollis Dolor',
@@ -61,7 +77,8 @@ class DatabaseSeeder extends Seeder
                 'lat' => '50.14141',
                 'long' => '5.03345',
                 'image' => 'image-activity-2.jpg',
-                'category_id' => 2
+                'category_id' => 2,
+                'user_id' => 1,
             ],
             [
                 'name' => 'Risus Ornare Mollis Dolor',
@@ -71,7 +88,8 @@ class DatabaseSeeder extends Seeder
                 'lat' => '50.14141',
                 'long' => '5.03345',
                 'image' => 'image-activity-2.jpg',
-                'category_id' => 3
+                'category_id' => 3,
+                'user_id' => 1,
             ],
             [
                 'name' => 'Risus Ornare Mollis Dolor',
@@ -81,7 +99,8 @@ class DatabaseSeeder extends Seeder
                 'lat' => '50.14141',
                 'long' => '5.03345',
                 'image' => 'image-activity-1.jpg',
-                'category_id' => 2
+                'category_id' => 2,
+                'user_id' => 1,
             ],
             [
                 'name' => 'Risus Ornare Mollis Dolor',
@@ -91,7 +110,8 @@ class DatabaseSeeder extends Seeder
                 'lat' => '50.14141',
                 'long' => '5.03345',
                 'image' => 'image-activity-3.jpg',
-                'category_id' => 3
+                'category_id' => 3,
+                'user_id' => 1,
             ],
             [
                 'name' => 'Risus Ornare Mollis Dolor',
@@ -101,7 +121,8 @@ class DatabaseSeeder extends Seeder
                 'lat' => '50.14141',
                 'long' => '5.03345',
                 'image' => 'image-activity-2.jpg',
-                'category_id' => 1
+                'category_id' => 1,
+                'user_id' => 1,
             ],
             [
                 'name' => 'Risus Ornare Mollis Dolor',
@@ -111,7 +132,8 @@ class DatabaseSeeder extends Seeder
                 'lat' => '50.14141',
                 'long' => '5.03345',
                 'image' => 'image-activity-2.jpg',
-                'category_id' => 1
+                'category_id' => 1,
+                'user_id' => 1,
             ],
             [
                 'name' => 'Risus Ornare Mollis Dolor',
@@ -121,7 +143,8 @@ class DatabaseSeeder extends Seeder
                 'lat' => '50.14141',
                 'long' => '5.03345',
                 'image' => 'image-activity-1.jpg',
-                'category_id' => 2
+                'category_id' => 2,
+                'user_id' => 1,
             ],
             [
                 'name' => 'Risus Ornare Mollis Dolor',
@@ -131,7 +154,8 @@ class DatabaseSeeder extends Seeder
                 'lat' => '50.14141',
                 'long' => '5.03345',
                 'image' => 'image-activity-2.jpg',
-                'category_id' => 3
+                'category_id' => 3,
+                'user_id' => 1,
             ],
             [
                 'name' => 'Risus Ornare Mollis Dolor',
@@ -141,7 +165,8 @@ class DatabaseSeeder extends Seeder
                 'lat' => '50.14141',
                 'long' => '5.03345',
                 'image' => 'image-activity-3.jpg',
-                'category_id' => 2
+                'category_id' => 2,
+                'user_id' => 1,
             ],
         ];
 
