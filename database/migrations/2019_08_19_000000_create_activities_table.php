@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->longtext('description');
             $table->text('location');
-            $table->text('lat');
-            $table->text('long');
+            $table->decimal('lat', 8,6);
+            $table->decimal('long', 8,6);
             $table->dateTime('date');
             $table->string('image');
             $table->unsignedBigInteger('user_id');
