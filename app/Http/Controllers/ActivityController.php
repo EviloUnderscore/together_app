@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Activity;
-use App\Models\Category;
 
 class ActivityController extends Controller
 {
@@ -27,10 +26,7 @@ class ActivityController extends Controller
                 array_push($filtered_activites, $activity);
             }
         }
-        return Inertia::render('Dashboard', [
-            'activities' => $activities,
-            'categories' => Category::all(),
-        ]);
+        return response()->json($filtered_activites);
     }
 
     public function getActivityById($id) {

@@ -4,16 +4,30 @@ import Filter from '../Components/Filter.vue';
 import ActivitiesNearby from '../Components/ActivitiesNearby.vue';
 import ActivitiesNext from '../Components/ActivitiesNext.vue';
 import Sports from '../Components/Sports.vue';
-import { onBeforeMount, onMounted } from 'vue';
 
 import { useLocationStore } from '../stores/locationStore';
+import { useActivitiesStore } from '../stores/activitiesStore';
+import { computed, onBeforeMount, onServerPrefetch } from 'vue';
+
 const locationStore = useLocationStore();
-locationStore.fetchLocation();
+const activitiesStore = useActivitiesStore();
 
 defineProps({
-    activities: Array,
     categories: Array,
 })
+
+const activitiesByDistance = computed(() => activitiesStore.getActivitiesSortedByDistance());
+const activitiesByDate = computed(() => activitiesStore.getActivitiesSortedByDate());
+async function fetchActivities() {
+    const coords = await locationStore.getCoords;
+    activitiesStore.fetchActivities(coords);
+}
+
+onBeforeMount(async () => {
+    locationStore.fetchLocation().then(() => {
+        fetchActivities();
+    })
+});
 
 </script>
 

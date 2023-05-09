@@ -9,27 +9,26 @@ export const useActivitiesStore = defineStore({
     }),
     getters: {
         getActivitiesSortedByDistance(){
-
+          return this.activities.values.slice().sort((a, b) => a.distance - b.distance);
         },
         getActivitiesSortedByDate(){
-
+          return this.activities.values.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
         }
     },
     actions: {
-       async fetchActivities(){
-        const locationStore = useLocationStore();
-        const { latitude, longitude } = locationStore.position.coords;
-        try {
-            const response = await axios.get('/api/activities', {
-              params: {
-                latitude,
-                longitude
-              }
-            });
-            this.activities = response.data;
-          } catch (error) {
-            console.error(error)
+       async fetchActivities(coords){
+        axios.get('/api/activities', {
+          params: {
+            latitude: coords.latitude,
+            longitude: coords.longitude
           }
+        }).then(response => {
+          console.log('RESPONSE');
+          console.log(response.data);
+          this.activities = response.data;
+        }).catch(error => {
+            console.error(error)
+        });
        }
     }
 })
