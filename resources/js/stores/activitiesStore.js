@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import axios from 'axios';
-import { useLocationStore } from "./locationStore";
 
 export const useActivitiesStore = defineStore({
     id: 'activitiesStore',
@@ -9,10 +8,10 @@ export const useActivitiesStore = defineStore({
     }),
     getters: {
         getActivitiesSortedByDistance(){
-          return this.activities.values.slice().sort((a, b) => a.distance - b.distance);
+          return this.activities.sort((a, b) => a.distance - b.distance);
         },
         getActivitiesSortedByDate(){
-          return this.activities.values.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
+          return [...this.activities].sort((a, b) => new Date(a.date) - new Date(b.date));
         }
     },
     actions: {

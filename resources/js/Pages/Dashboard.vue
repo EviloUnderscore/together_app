@@ -16,8 +16,8 @@ defineProps({
     categories: Array,
 })
 
-const activitiesByDistance = computed(() => activitiesStore.getActivitiesSortedByDistance());
-const activitiesByDate = computed(() => activitiesStore.getActivitiesSortedByDate());
+const activitiesByDistance = computed(() => activitiesStore.getActivitiesSortedByDistance);
+const activitiesByDate = computed(() => activitiesStore.getActivitiesSortedByDate);
 async function fetchActivities() {
     const coords = await locationStore.getCoords;
     activitiesStore.fetchActivities(coords);
@@ -43,14 +43,10 @@ onBeforeMount(async () => {
 
             <Sports :categories="categories"/>
 
-            <ActivitiesNearby :activities="activities"/>
+            <ActivitiesNearby :activities="activitiesByDistance"/>
 
-            <ActivitiesNext :activities="activities"/>
-        </div>
-        
-
-        
-
+            <ActivitiesNext :activities="activitiesByDate"/>
+        </div>   
     </AppLayout>
 </template>
 

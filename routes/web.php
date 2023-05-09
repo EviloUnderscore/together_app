@@ -39,5 +39,5 @@ Route::middleware([
         return Inertia::render('Dashboard', [
             'categories' => Category::all()
         ]);
-    });
+    })->name('dashboard');
 });
