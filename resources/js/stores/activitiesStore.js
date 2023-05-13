@@ -22,8 +22,6 @@ export const useActivitiesStore = defineStore({
             longitude: coords.longitude
           }
         }).then(response => {
-          console.log('RESPONSE');
-          console.log(response.data);
           this.activities = response.data;
         }).catch(error => {
             console.error(error)

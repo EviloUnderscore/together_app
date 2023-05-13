@@ -1,12 +1,6 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 
-defineProps({
-  activity: {
-    type: Object,
-    required: true,
-  }
-});
 
 </script>
 

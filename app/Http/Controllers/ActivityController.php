@@ -29,8 +29,14 @@ class ActivityController extends Controller
         return response()->json($filtered_activites);
     }
 
-    public function getActivityById($id) {
-        $activity = Activity::with('category', 'user')->find($id);
+    public function getActivityById(Request $request) {
+        $activity = Activity::with('category', 'user')->find($request->id);
+
+        $activity->distance = round($this->computeDistance(
+            $request->latitude, 
+            $request->longitude, 
+            $activity->lat,
+            $activity->long), 2);
 
         return Inertia::render('ActivityDetails', [
             'activity' => $activity
@@ -53,6 +59,6 @@ class ActivityController extends Controller
         $a = sin($deltaLat/2) * (sin($deltaLat/2)) + cos($userLat) * cos($activityLat) * sin($deltaLong/2) * sin($deltaLong/2);
         $c = 2 * atan2(sqrt($a), sqrt(1-$a));
 
-        return $earth_radius * $c; 
+        return $earth_radius * $c;
     }
 }

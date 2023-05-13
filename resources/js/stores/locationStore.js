@@ -16,8 +16,6 @@ export const useLocationStore = defineStore({
             this.position = await new Promise((resolve, reject) => {
               navigator.geolocation.getCurrentPosition(resolve, reject)
             });
-            console.log('FETCH LOCATION');
-            console.log(this.position);
           } catch (error) {
             console.error(error)
           }

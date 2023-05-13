@@ -1,6 +1,9 @@
 <script setup>
+import { useLocationStore } from '../stores/locationStore';
 
-import { computed } from 'vue';
+const locationStore = useLocationStore();
+const coords = locationStore.getCoords
+
 defineProps({
     activity: {
       type: Object,
@@ -19,7 +22,7 @@ defineProps({
                 </svg>
             </div>
             <div class="absolute top-4 left-2 bg-slate-50 px-2 rounded-xl text-cyan-700">{{ activity.category.name }}</div>
-            <div class="date text-slate-50">{{ activity.date }}</div>
+            <div class="date text-slate-50">{{ new Date(activity.date).toLocaleDateString('fr-FR', {day: 'numeric', month: 'numeric', year: 'numeric'}) }}</div>
             <img src="../../../public/storage/assets/img/img2.jpg" alt="" class="max-w-none overflow-hidden nearby">
         </div>
         <div class="h-1/2 w-full mx-2 text-slate-50 text-lg flex flex-col pb-4">
@@ -46,7 +49,7 @@ defineProps({
                 </svg>
                 <p>1/5 participant(s)</p>
             </div>
-            <a class="bg-green-500 w-1/2 px-8 py-2 rounded-lg button text-center" :href="route('details', {id: activity.id})">
+            <a class="bg-green-500 w-1/2 px-8 py-2 rounded-lg button text-center" :href="route('details', {id: activity.id, latitude: coords.latitude, longitude: coords.longitude})">
                Infos
             </a>
         </div>
