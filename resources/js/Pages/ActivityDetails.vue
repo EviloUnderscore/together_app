@@ -99,7 +99,7 @@ defineProps({
 .header-section{
     position: absolute;
     width: 100%;
-    height: 8vh;
+    height: 9vh;
     top: 0;
     background-color: rgba(0, 0, 0, 0.2);
 }

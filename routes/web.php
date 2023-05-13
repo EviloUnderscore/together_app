@@ -20,6 +20,12 @@ use App\Http\Controllers\ActivityController;
 
 Route::get('/activity/{id}', [ActivityController::class, 'getActivityById'])->name('details');
 
+Route::get('/activities/create', function () {
+    return Inertia::render('ActivityCreate', [
+        'categories' => Category::all()
+    ]);
+})->name('create');
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
