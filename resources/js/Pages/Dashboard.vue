@@ -18,6 +18,7 @@ defineProps({
 
 const activitiesByDistance = computed(() => activitiesStore.getActivitiesSortedByDistance);
 const activitiesByDate = computed(() => activitiesStore.getActivitiesSortedByDate);
+
 async function fetchActivities() {
     const coords = await locationStore.getCoords;
     activitiesStore.fetchActivities(coords);

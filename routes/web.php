@@ -18,6 +18,8 @@ use App\Http\Controllers\ActivityController;
 |
 */
 
+
+// Base route when the user is NOT authentificate and goes to Login or Register
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -27,6 +29,7 @@ Route::get('/', function () {
     ]);
 });
 
+// All routes if user is logged
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

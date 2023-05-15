@@ -12,9 +12,11 @@ class ActivityController extends Controller
     // Get all activities within a 100km radius
     public function getActivitiesWithDistance(Request $request) {
         
+        // Add category and user to activity
         $activities = Activity::with('category', 'user')->get();
         $filtered_activites = [];
 
+        // Get activity only if < 100km radius
         foreach($activities as $activity){
             $activity->distance = round($this->computeDistance(
                 $request->latitude, 
@@ -32,6 +34,7 @@ class ActivityController extends Controller
     public function getActivityById(Request $request) {
         $activity = Activity::with('category', 'user')->find($request->id);
 
+        // Compute activity distance from user before display the detail
         $activity->distance = round($this->computeDistance(
             $request->latitude, 
             $request->longitude, 
@@ -43,10 +46,12 @@ class ActivityController extends Controller
         ]);
     }
 
+
+    // Store an activity to the Database
     public function store(Request $request){
         
+        // Make the API call to get the latitude and longitude
         $curl = curl_init();
-
         curl_setopt_array($curl, [
             CURLOPT_URL => "https://api.openweathermap.org/geo/1.0/direct?q=".$request->location."&limit=1&appid=b68afb69c2607c15cb4f6bf022f17e25",
             CURLOPT_RETURNTRANSFER => true,
@@ -58,13 +63,14 @@ class ActivityController extends Controller
             CURLOPT_POSTFIELDS => "",
             CURLOPT_REFERER => "http://127.0.0.1:8000"
         ]);
-
         $response = curl_exec($curl);
         $error = curl_error($curl);
         curl_close($curl);
 
+        // Coords is an array with 1 objects which has the 'lat' an 'lon' params
         $coords = json_decode($response, true);
 
+        //Generate the roght date format before storing to db
         $date = $request->date;
         $timestamp = strtotime($date); // Convert ISO 8601 date to Unix timestamp
         $formatted_date = date('Y-m-d H:i:s', $timestamp);

@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->SeedUsers();
         $this->SeedCategories();
-        //$this->SeedActivities();
+        $this->SeedActivities();
     }
 
     private function SeedCategories(){

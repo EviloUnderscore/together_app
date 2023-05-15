@@ -9,9 +9,6 @@ defineProps({
 });
 
 </script>
-
-
-
 <template>
     <AppLayout title="Détails">
         <div class="pb-20">

@@ -14,12 +14,12 @@ defineProps({
 });
 
 function submit() {
+
+    // Generate a datetime object based on the date input and the time input in HTML
     let storeDate = new Date(form.date);
     const [inputHours, inputMinutes] = form.time.split(':');
     storeDate.setHours(inputHours);
     storeDate.setMinutes(inputMinutes)
-
-    //const coords = activitiesStore.fetchLocation(form.location)
 
     router.post('store', {
         name: form.name,
@@ -41,8 +41,6 @@ const form = reactive({
 })
 
 </script>
-
-
 
 <template>
     <AppLayout title="Détails">
