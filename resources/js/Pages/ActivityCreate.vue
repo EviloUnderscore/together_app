@@ -33,7 +33,7 @@ function submit() {
 
 const form = reactive({
     name: '',
-    categoryID: 0,
+    categoryID: 1,
     date: new Date(),
     time: '',
     location: '',
@@ -70,7 +70,6 @@ const form = reactive({
                     <div class="input-form">
                         <label for="categories">Catégories</label>
                         <select name="categories" id="categories" v-model="form.categoryID">
-                            <option value="0">Choisir une catégorie</option>
                             <template v-for="category of categories">
                                 <option :value="category.id">{{ category.name }}</option>
                             </template>

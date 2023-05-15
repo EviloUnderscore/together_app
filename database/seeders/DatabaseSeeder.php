@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->SeedUsers();
         $this->SeedCategories();
-        $this->SeedActivities();
+        //$this->SeedActivities();
     }
 
     private function SeedCategories(){
@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
     private function SeedUsers(){
         $users = [
             ['id' => 1, 
-            'name' => 'UserTest',
+            'name' => 'Jean',
             'email' => 'test-user@gmail.com',
             'password' => 'Testuser123',
             ]
