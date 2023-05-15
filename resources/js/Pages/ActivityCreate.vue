@@ -19,14 +19,12 @@ function submit() {
     storeDate.setHours(inputHours);
     storeDate.setMinutes(inputMinutes)
 
-    const coords = activitiesStore.fetchLocation(form.location)
+    //const coords = activitiesStore.fetchLocation(form.location)
 
     router.post('store', {
         name: form.name,
         description: form.description,
         location: form.location,
-        lat: 50.555555555,
-        long: 5.000000,
         date: storeDate,
         user_id: 1,
         category_id: form.categoryID

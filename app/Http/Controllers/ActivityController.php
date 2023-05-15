@@ -44,11 +44,35 @@ class ActivityController extends Controller
     }
 
     public function store(Request $request){
+        
+        $curl = curl_init();
+
+        curl_setopt_array($curl, [
+            CURLOPT_URL => "https://api.openweathermap.org/geo/1.0/direct?q=".$request->location."&limit=1&appid=b68afb69c2607c15cb4f6bf022f17e25",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_POSTFIELDS => "",
+            CURLOPT_REFERER => "http://127.0.0.1:8000"
+        ]);
+
+        $response = curl_exec($curl);
+        $error = curl_error($curl);
+        curl_close($curl);
+
+        $coords = json_decode($response, true);
+
         $date = $request->date;
         $timestamp = strtotime($date); // Convert ISO 8601 date to Unix timestamp
         $formatted_date = date('Y-m-d H:i:s', $timestamp);
-
-        $request->merge(['date' => $formatted_date]);
+        $request->merge([
+            'date' => $formatted_date,
+            'lat' => $coords[0]['lat'],
+            'long' => $coords[0]['lon'],
+        ]);
 
         $request->validate([
             'name' => 'required|max:255',
