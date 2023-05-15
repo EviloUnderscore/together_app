@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->longtext('description');
-            $table->text('location');
+            $table->longtext('description')->nullable();
+            $table->text('location')->nullable();;
             $table->decimal('lat', 8,6);
             $table->decimal('long', 8,6);
-            $table->dateTime('date');
-            $table->string('image');
+            $table->dateTime('date')->nullable();
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
+            $table->string('image')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
         });

@@ -26,6 +26,8 @@ Route::get('/activities/create', function () {
     ]);
 })->name('create');
 
+Route::post('/activities/store', [ActivityController::class, 'store'])->name('store');
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [

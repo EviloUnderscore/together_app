@@ -1,6 +1,10 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import { ref } from 'vue';
+import { router } from '@inertiajs/vue3';
+import { reactive } from 'vue';
+import { useActivitiesStore } from '../stores/activitiesStore';
+
+const activitiesStore = useActivitiesStore();
 
 defineProps({
   categories: {
@@ -9,7 +13,27 @@ defineProps({
   }
 });
 
-const activity = ref({
+function submit() {
+    let storeDate = new Date(form.date);
+    const [inputHours, inputMinutes] = form.time.split(':');
+    storeDate.setHours(inputHours);
+    storeDate.setMinutes(inputMinutes)
+
+    const coords = activitiesStore.fetchLocation(form.location)
+
+    router.post('store', {
+        name: form.name,
+        description: form.description,
+        location: form.location,
+        lat: 50.555555555,
+        long: 5.000000,
+        date: storeDate,
+        user_id: 1,
+        category_id: form.categoryID
+    })
+}
+
+const form = reactive({
     name: '',
     categoryID: 0,
     date: new Date(),
@@ -40,14 +64,14 @@ const activity = ref({
                 </div>
             </section>
             <section class="pt-20">
-                <form action="">
+                <form @submit.prevent="submit">
                     <div class="input-form">
                         <label for="title">Titre</label>
-                        <input type="text" id="title" name="title" placeholder="Titre de l'activité" :value="activity.name">
+                        <input type="text" id="title" name="title" placeholder="Titre de l'activité" v-model="form.name">
                     </div>
                     <div class="input-form">
                         <label for="categories">Catégories</label>
-                        <select name="categories" id="categories" :value="activity.categoryID">
+                        <select name="categories" id="categories" v-model="form.categoryID">
                             <option value="0">Choisir une catégorie</option>
                             <template v-for="category of categories">
                                 <option :value="category.id">{{ category.name }}</option>
@@ -56,24 +80,24 @@ const activity = ref({
                     </div>
                     <div class="input-form">
                         <label for="date">Date</label>
-                        <input type="date" id="date" name="date" :value="activity.date">
+                        <input type="date" id="date" name="date" v-model="form.date">
                     </div>
                     <div class="input-form">
                         <label for="time">Heure</label>
-                        <input type="time" id="time" name="time" :value="activity.time">
+                        <input type="time" id="time" name="time" v-model="form.time">
                     </div>
                     <div class="input-form">
-                        <label for="location">Lieu</label>
-                        <input type="text" id="location" name="location" placeholder="Lieu de l'activité" :value="activity.location">
+                        <label for="location">Lieu (Ville)</label>
+                        <input type="text" id="location" name="location" placeholder="Lieu de l'activité" v-model="form.location">
                     </div>
                     <div class="input-form">
                         <label for="description">Description</label>
-                        <textarea id="description" name="description" placeholder="Description" :value="activity.description">
+                        <textarea id="description" name="description" placeholder="Description" v-model="form.description">
 
                         </textarea>
                     </div>
                     <div class="input-form">
-                        <button type="button" class="bg-cyan-900 py-5 rounded-md text-slate-50 text-3xl font-black">Créer l'activité</button>
+                        <input type="submit" class="bg-cyan-900 py-5 rounded-md text-slate-50 text-3xl font-black" value="Créer l'activité">
                     </div>
                 </form>
             </section>

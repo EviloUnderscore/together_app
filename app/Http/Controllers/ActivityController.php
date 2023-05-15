@@ -43,6 +43,24 @@ class ActivityController extends Controller
         ]);
     }
 
+    public function store(Request $request){
+        $date = $request->date;
+        $timestamp = strtotime($date); // Convert ISO 8601 date to Unix timestamp
+        $formatted_date = date('Y-m-d H:i:s', $timestamp);
+
+        $request->merge(['date' => $formatted_date]);
+
+        $request->validate([
+            'name' => 'required|max:255',
+            'user_id' => 'integer',
+            'category_id' => 'integer'
+        ]);
+        $input = $request->all();
+
+        Activity::create($input);
+        return redirect()->route('dashboard')->with('success', 'Resource added successfully');
+    }
+
     //Compute distance between two earth point based on latitude and longitude (in KM)
     private function computeDistance($userLatitude, $userLongitude, $activityLatitude, $activityLongitude){
         $earth_radius = 6371;
