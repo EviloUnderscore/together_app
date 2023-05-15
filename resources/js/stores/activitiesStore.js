@@ -29,14 +29,15 @@ export const useActivitiesStore = defineStore({
        },
        async fetchLocation(location){
         const urlLocation = location.replace(/ /g, '+');
+        try {
+          data = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${urlLocation}&limit=1&appid=b68afb69c2607c15cb4f6bf022f17e25`)
         
-        axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${urlLocation}&limit=1&appid=b68afb69c2607c15cb4f6bf022f17e25`)
-        .then(data => {
-          console.log('HERE');
-          const { lat, lon } = data[0];
-          console.log(`Latitude: ${lat}, Longitude: ${lon}`);
-        })
-        .catch(error => console.error(error));
+        const { lat, lon } = data.data[0];
+        console.log(`Latitude: ${lat}, Longitude: ${lon}`);
+        return data.data[0];
+        } catch (error) {
+          console.error(error);
+        }
        }
     }
 })

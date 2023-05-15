@@ -18,17 +18,6 @@ use App\Http\Controllers\ActivityController;
 |
 */
 
-Route::get('/activity/{id}', [ActivityController::class, 'getActivityById'])->name('details');
-
-Route::get('/activities/create', function () {
-    return Inertia::render('ActivityCreate', [
-        'categories' => Category::all()
-    ]);
-})->name('create');
-
-Route::post('/activities/store', [ActivityController::class, 'store'])->name('store');
-
-
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -48,4 +37,16 @@ Route::middleware([
             'categories' => Category::all()
         ]);
     })->name('dashboard');
+
+    Route::get('/activity/{id}', [ActivityController::class, 'getActivityById'])
+    ->name('details');
+
+    Route::get('/activities/create', function () {
+        return Inertia::render('ActivityCreate', [
+            'categories' => Category::all()
+        ]);
+    })->name('create');
+
+    Route::post('/activities/store', [ActivityController::class, 'store'])
+    ->name('store');
 });
