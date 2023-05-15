@@ -72,6 +72,7 @@ class ActivityController extends Controller
             'date' => $formatted_date,
             'lat' => $coords[0]['lat'],
             'long' => $coords[0]['lon'],
+            'user_id' => auth()->user()->id
         ]);
 
         $request->validate([
