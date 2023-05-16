@@ -43,7 +43,7 @@ defineProps({
                         </p>
                     </div>
                 </div>
-                <img src="../../../public/storage/assets/img/img2.jpg" alt="" class="max-w-none overflow-hidden nearby">
+                <img :src="'images/' + activity.image" alt="" class="max-w-none overflow-hidden nearby">
             </section>
             <section>
                 <div class="transition bg-cyan-600 flex justify-between px-8 items-center">

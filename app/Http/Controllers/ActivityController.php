@@ -70,7 +70,7 @@ class ActivityController extends Controller
         // Coords is an array with 1 objects which has the 'lat' an 'lon' params
         $coords = json_decode($response, true);
 
-        //Generate the roght date format before storing to db
+        //Generate the right date format before storing to db
         $date = $request->date;
         $timestamp = strtotime($date); // Convert ISO 8601 date to Unix timestamp
         $formatted_date = date('Y-m-d H:i:s', $timestamp);

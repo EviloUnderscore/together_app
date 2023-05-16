@@ -27,7 +27,8 @@ function submit() {
         location: form.location,
         date: storeDate,
         user_id: 1,
-        category_id: form.categoryID
+        category_id: form.categoryID,
+        image: 'img2.jpg'
     })
 }
 
@@ -60,14 +61,16 @@ const form = reactive({
                 </div>
             </section>
             <section class="pt-20">
-                <form @submit.prevent="submit">
+                <form @submit.prevent="submit" method='post' enctype="multipart/form-data">
+                    <span hidden>@csrf</span>
+                    
                     <div class="input-form">
                         <label for="title">Titre</label>
                         <input type="text" id="title" name="title" placeholder="Titre de l'activité" v-model="form.name">
                     </div>
                     <div class="input-form">
-                        <label for="categories">Catégories</label>
-                        <select name="categories" id="categories" v-model="form.categoryID">
+                        <label for="category_id">Catégories</label>
+                        <select name="category_id" id="category_id" v-model="form.categoryID">
                             <template v-for="category of categories">
                                 <option :value="category.id">{{ category.name }}</option>
                             </template>
@@ -80,6 +83,9 @@ const form = reactive({
                     <div class="input-form">
                         <label for="time">Heure</label>
                         <input type="time" id="time" name="time" v-model="form.time">
+                    </div>
+                    <div class="input-form">
+                        <input type="file" name="file" id="file">
                     </div>
                     <div class="input-form">
                         <label for="location">Lieu (Ville)</label>
