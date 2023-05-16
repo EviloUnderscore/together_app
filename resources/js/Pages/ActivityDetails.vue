@@ -58,7 +58,7 @@ defineProps({
                 </div>
                 <div class="text-xl text-slate-50 font-medium pl-4 mt-4">
                     <p>Organisé par</p>
-                    <img src="../../../public/storage/assets/img/img-tennis.jpg" alt="" class="w-16 h-16 rounded-full profile-img my-2">
+                    <img :src="'images/img-velo.jpg'" alt="" class="w-16 h-16 rounded-full profile-img my-2">
                     <p>
                         {{ activity.user.name }}
                     </p>

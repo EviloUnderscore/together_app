@@ -18,7 +18,6 @@ use App\Http\Controllers\ActivityController;
 |
 */
 
-
 // Base route when the user is NOT authentificate and goes to Login or Register
 Route::get('/', function () {
     return Inertia::render('Welcome', [
