@@ -23,7 +23,7 @@ defineProps({
             </div>
             <div class="absolute top-4 left-2 bg-slate-50 px-2 rounded-xl text-cyan-700">{{ activity.category.name }}</div>
             <div class="date text-slate-50">{{ new Date(activity.date).toLocaleDateString('fr-FR', {day: 'numeric', month: 'numeric', year: 'numeric'}) }}</div>
-            <img src="../../../public/storage/assets/img/img2.jpg" alt="" class="max-w-none overflow-hidden nearby">
+            <img :src="'images/' + activity.image" alt="" class="max-w-none overflow-hidden nearby">
         </div>
         <div class="h-1/2 w-full mx-2 text-slate-50 text-lg flex flex-col pb-4">
             <p class="py-4 text-xl font-extrabold">{{ activity.name }}</p>
