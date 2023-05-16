@@ -43,7 +43,7 @@ defineProps({
                         </p>
                     </div>
                 </div>
-                <img :src="'images/' + activity.image" alt="" class="max-w-none overflow-hidden nearby">
+                <img :src="'/images/' + activity.image" alt="" class="max-w-none overflow-hidden nearby">
             </section>
             <section>
                 <div class="transition bg-cyan-600 flex justify-between px-8 items-center">
@@ -58,7 +58,7 @@ defineProps({
                 </div>
                 <div class="text-xl text-slate-50 font-medium pl-4 mt-4">
                     <p>Organisé par</p>
-                    <img :src="'images/img-velo.jpg'" alt="" class="w-16 h-16 rounded-full profile-img my-2">
+                    <img :src="'/images/img2.jpg'" alt="" class="w-16 h-16 rounded-full profile-img my-2">
                     <p>
                         {{ activity.user.name }}
                     </p>
